@@ -1,0 +1,125 @@
+################################################################################
+# Makefile para hello_minimal usando el sistema PMSIS de PULP SDK
+################################################################################
+
+# Nombre de la aplicación
+APP = hello_minimal
+
+# Archivos fuente
+APP_SRCS = hello_minimal.c
+
+# Flags de optimización
+APP_CFLAGS += -Os -g
+APP_LDFLAGS += -Os -g
+
+# Directorios
+PULP_SDK_HOME ?= $(HOME)/PULP/pulp-sdk
+RULES_DIR ?= $(PULP_SDK_HOME)/tools/rules
+
+# Incluir reglas del SDK (esto configura todo automáticamente)
+include $(RULES_DIR)/pmsis_rules.mk
+
+# ============================================================================
+# Targets adicionales para análisis
+# ============================================================================
+
+BUILD_DIR_REAL = BUILD/PULP/GCC_RISCV/$(APP)
+
+BUILD_DIR_REAL = BUILD/PULP/GCC_RISCV/$(APP)
+
+.PHONY: info disasm help run-stats run-trace run-profile
+
+# Mostrar información del ejecutable
+info:
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  INFORMACIÓN DEL EJECUTABLE"
+	@echo "════════════════════════════════════════════════════════════"
+	@if [ -f $(BUILD_DIR_REAL)/$(APP).elf ]; then \
+		echo ""; \
+		echo "--- Tamaño ---"; \
+		riscv32-unknown-elf-size $(BUILD_DIR_REAL)/$(APP).elf; \
+		echo ""; \
+		echo "--- Secciones ---"; \
+		riscv32-unknown-elf-objdump -h $(BUILD_DIR_REAL)/$(APP).elf | grep -E "\.text|\.data|\.bss|Idx"; \
+		echo ""; \
+		echo "--- Función main (Assembly RISC-V) ---"; \
+		riscv32-unknown-elf-objdump -d $(BUILD_DIR_REAL)/$(APP).elf | grep -A30 "<main>:"; \
+	else \
+		echo "❌ Error: ELF no encontrado. Ejecuta 'make all' primero."; \
+	fi
+
+# Desensamblar código completo
+disasm:
+	@if [ -f $(BUILD_DIR_REAL)/$(APP).elf ]; then \
+		riscv32-unknown-elf-objdump -d $(BUILD_DIR_REAL)/$(APP).elf > $(APP)_disasm.txt; \
+		echo "✓ Desensamblado guardado en: $(APP)_disasm.txt"; \
+	else \
+		echo "❌ Error: ELF no encontrado. Ejecuta 'make all' primero."; \
+	fi
+
+# Ejecutar con estadísticas de rendimiento (VCD + eventos)
+run-stats: all
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Ejecutando con ESTADÍSTICAS (VCD + Eventos)"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	$(MAKE) run runner_args="--vcd --event=.* --event-format=long"
+	@echo ""
+	@echo "📊 VCD generado: $(BUILD_DIR_REAL)/view.vcd"
+	@echo "📊 Eventos: $(BUILD_DIR_REAL)/events.log"
+	@echo "💡 Abre el VCD con: gtkwave $(BUILD_DIR_REAL)/view.vcd"
+
+# Ejecutar con trace de instrucciones
+run-trace: all
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Ejecutando con TRACE DE INSTRUCCIONES"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	$(MAKE) run runner_args="--trace=insn --trace-level=debug"
+	@echo ""
+	@echo "📝 Ver trace en archivos de log generados"
+
+# Ejecutar con profiling completo (todas las opciones)
+run-profile: all
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Ejecutando con PROFILING COMPLETO"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	$(MAKE) run runner_args="--vcd --event=.* --trace=insn --trace-format=long"
+	@echo ""
+	@echo "📈 Archivos generados:"
+	@echo "   - VCD: $(BUILD_DIR_REAL)/view.vcd"
+	@echo "   - Eventos: $(BUILD_DIR_REAL)/"
+	@echo "   - Traces: Archivos de log"
+
+# Ayuda
+help:
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Makefile para $(APP) (usando PMSIS)"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	@echo "Targets:"
+	@echo "  make all         - Compila hello_minimal.c → hello_minimal.elf"
+	@echo "  make run         - Compila y ejecuta en GVSOC"
+	@echo "  make run-stats   - Ejecuta con VCD (ver en GTKWave)"
+	@echo "  make run-trace   - Ejecuta con trace de instrucciones"
+	@echo "  make run-profile - Ejecuta con profiling completo"
+	@echo "  make info        - Muestra información del ejecutable"
+	@echo "  make disasm      - Genera desensamblado completo"
+	@echo "  make clean       - Limpia archivos generados"
+	@echo "  make help        - Muestra esta ayuda"
+	@echo ""
+	@echo "Ejemplos:"
+	@echo "  make clean all run         # Compilar y ejecutar"
+	@echo "  make run-stats             # Generar VCD para análisis"
+	@echo "  make run-trace             # Ver instrucciones ejecutadas"
+	@echo "  make run-profile           # Ver estadísticas de rendimiento"
+	@echo ""
+	@echo "El ELF se genera en: $(BUILD_DIR_REAL)/$(APP).elf"
+	@echo ""
+

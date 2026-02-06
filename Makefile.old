@@ -1,0 +1,189 @@
+################################################################################
+# Makefile para compilar y ejecutar hello_minimal.c en PULPissimo (GVSOC)
+################################################################################
+
+# Nombre de la aplicación
+APP = hello_minimal
+
+# Archivos fuente
+APP_SRCS = hello_minimal.c
+
+# Directorios
+PULP_SDK_HOME ?= $(HOME)/PULP/pulp-sdk
+TOOLCHAIN_DIR = $(HOME)/PULP/pulp-riscv-gnu-toolchain/install-32bit
+BUILD_DIR = build
+
+# Toolchain
+CC = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-gcc
+AS = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-as
+LD = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-gcc
+OBJDUMP = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-objdump
+SIZE = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-size
+STRINGS = $(TOOLCHAIN_DIR)/bin/riscv32-unknown-elf-strings
+
+# Flags de compilación
+ARCH_FLAGS = -march=rv32imcxpulpv2 -mabi=ilp32
+OPT_FLAGS = -Os -g
+WARN_FLAGS = -Wall
+
+# Defines del chip
+DEFINES = \
+	-DPULP_CHIP=PULP \
+	-DPULP_CHIP_STR=pulp \
+	-DCHIP_PULP=1 \
+	-D__PULP__ \
+	-D__RISCV__
+
+# Include paths
+INCLUDES = \
+	-I$(PULP_SDK_HOME)/rtos/pulpos/common/include \
+	-I$(PULP_SDK_HOME)/rtos/pmsis/pmsis_api/include \
+	-I$(PULP_SDK_HOME)/rtos/pmsis/pmsis_bsp/include \
+	-I$(PULP_SDK_HOME)/rtos/pulpos/pulp_hal/include \
+	-I$(PULP_SDK_HOME)/rtos/pulpos/pulp_hal/include/hal/chips/pulp \
+	-I$(PULP_SDK_HOME)/rtos/pulpos/pulp_archi/include \
+	-I$(PULP_SDK_HOME)/rtos/pulpos/pulp_archi/include/archi/chips/pulp
+
+# Linker script y librerías
+LINKER_SCRIPT = $(PULP_SDK_HOME)/rtos/pulpos/pulp/kernel/chips/pulp/link.ld
+LIB_DIR = $(PULP_SDK_HOME)/install/lib
+
+# Buscar librerías PULP (pueden no estar compiladas)
+PULP_LIBS = $(wildcard $(LIB_DIR)/librt.a)
+ifneq ($(PULP_LIBS),)
+    LIBS = -lrt -lrtio -lgcc
+else
+    # Si no hay librerías PULP, usar solo libgcc (mínimo)
+    LIBS = -lgcc
+endif
+
+# Flags del linker
+LDFLAGS = \
+	$(ARCH_FLAGS) \
+	-nostartfiles \
+	-T $(LINKER_SCRIPT) \
+	$(if $(PULP_LIBS),-L$(LIB_DIR),) \
+	-Wl,--gc-sections \
+	-Wl,-Map=$(BUILD_DIR)/$(APP).map
+
+# Archivos de salida
+APP_O = $(BUILD_DIR)/$(APP).o
+APP_ELF = $(BUILD_DIR)/$(APP).elf
+APP_ASM = $(BUILD_DIR)/$(APP).s
+APP_DISASM = $(BUILD_DIR)/$(APP)_disasm.txt
+
+# CFLAGS completo
+CFLAGS = $(ARCH_FLAGS) $(OPT_FLAGS) $(WARN_FLAGS) $(DEFINES) $(INCLUDES)
+
+################################################################################
+# Targets
+################################################################################
+
+.PHONY: all clean run info disasm help
+
+# Default target
+all: $(APP_ELF)
+	@echo ""
+	@echo "✅ Compilación completada exitosamente!"
+	@echo ""
+	@$(SIZE) $(APP_ELF)
+	@echo ""
+	@echo "Ejecuta 'make run' para ejecutar en GVSOC"
+
+# Crear directorio de build
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+
+# PASO 1: Compilar C a objeto
+$(APP_O): $(APP_SRCS) | $(BUILD_DIR)
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  PASO 1: Compilando $(APP_SRCS) → $(APP_O)"
+	@echo "════════════════════════════════════════════════════════════"
+	$(CC) $(CFLAGS) -c $(APP_SRCS) -o $(APP_O)
+	@echo "✓ Objeto generado"
+
+# PASO 2: Enlazar para crear ELF
+$(APP_ELF): $(APP_O)
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  PASO 2: Enlazando $(APP_O) → $(APP_ELF)"
+	@echo "════════════════════════════════════════════════════════════"
+	$(LD) $(LDFLAGS) $(APP_O) $(LIBS) -o $(APP_ELF)
+	@echo "✓ Ejecutable ELF generado"
+
+# PASO 3: Desensamblar (opcional, para análisis)
+disasm: $(APP_ELF)
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Desensamblado del código"
+	@echo "════════════════════════════════════════════════════════════"
+	$(OBJDUMP) -d $(APP_ELF) > $(APP_DISASM)
+	@echo ""
+	@echo "--- Función main (Assembly RISC-V) ---"
+	@$(OBJDUMP) -d $(APP_ELF) | grep -A30 "<main>:" || echo "No se encontró función main"
+	@echo ""
+	@echo "Desensamblado completo guardado en: $(APP_DISASM)"
+
+# Mostrar información del ELF
+info: $(APP_ELF)
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  INFORMACIÓN DEL EJECUTABLE: $(APP_ELF)"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	@echo "--- Tamaño ---"
+	@$(SIZE) $(APP_ELF)
+	@echo ""
+	@echo "--- Secciones principales ---"
+	@$(OBJDUMP) -h $(APP_ELF) | grep -E "\.text|\.data|\.bss|\.rodata|Idx"
+	@echo ""
+	@echo "--- Strings en el ejecutable ---"
+	@$(STRINGS) $(APP_ELF) | head -20
+	@echo ""
+	@echo "--- Código Assembly (main) ---"
+	@$(OBJDUMP) -d $(APP_ELF) | grep -A30 "<main>:" || echo "No se encontró función main"
+
+# PASO 4: Ejecutar en GVSOC
+run: $(APP_ELF)
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  PASO 3: Ejecutando $(APP_ELF) en PULPissimo (GVSOC)"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	@echo "Configurando entorno PULP-Open..."
+	@bash -c "source $(PULP_SDK_HOME)/configs/pulp-open.sh && \
+	          cd $(CURDIR) && \
+	          gapy --binary=$(APP_ELF)"
+	@echo ""
+	@echo "✅ Ejecución completada!"
+
+# Limpiar archivos generados
+clean:
+	@echo "Limpiando archivos generados..."
+	rm -rf $(BUILD_DIR)
+	@echo "✅ Limpieza completada"
+
+# Ayuda
+help:
+	@echo ""
+	@echo "════════════════════════════════════════════════════════════"
+	@echo "  Makefile para $(APP)"
+	@echo "════════════════════════════════════════════════════════════"
+	@echo ""
+	@echo "Targets disponibles:"
+	@echo ""
+	@echo "  make all      - Compila hello_minimal.c → hello_minimal.elf"
+	@echo "  make run      - Compila y ejecuta en PULPissimo (GVSOC)"
+	@echo "  make info     - Muestra información del ejecutable"
+	@echo "  make disasm   - Genera desensamblado completo"
+	@echo "  make clean    - Limpia archivos generados"
+	@echo "  make help     - Muestra esta ayuda"
+	@echo ""
+	@echo "Proceso completo:"
+	@echo "  1. hello_minimal.c → (compilar) → hello_minimal.o"
+	@echo "  2. hello_minimal.o → (enlazar) → hello_minimal.elf"
+	@echo "  3. hello_minimal.elf → (ejecutar) → GVSOC → OUTPUT"
+	@echo ""
+	@echo "Uso típico:"
+	@echo "  make clean all run"
+	@echo ""

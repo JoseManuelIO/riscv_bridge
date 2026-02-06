@@ -1,0 +1,502 @@
+[dumpfile] "/home/jmini/riscv_bridge/tests/hello_minimal/all.vcd"
+@800200
+-overview
+@c00200
+-soc_clock_domain
+@22
++{cycles} chip.soc_clock_domain.cycles
++{period} chip.soc_clock_domain.period
+@1401200
+-soc_clock_domain
+@c00200
+-cluster_clock
+@22
++{cycles} chip.cluster_clock.cycles
++{period} chip.cluster_clock.period
+@1401200
+-cluster_clock
+@2022
+^1 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe0.core_state.txt
++{pe0} chip.cluster.pe0.state[7:0]
+^2 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe1.core_state.txt
++{pe1} chip.cluster.pe1.state[7:0]
+^3 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe2.core_state.txt
++{pe2} chip.cluster.pe2.state[7:0]
+^4 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe3.core_state.txt
++{pe3} chip.cluster.pe3.state[7:0]
+^5 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe4.core_state.txt
++{pe4} chip.cluster.pe4.state[7:0]
+^6 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe5.core_state.txt
++{pe5} chip.cluster.pe5.state[7:0]
+^7 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe6.core_state.txt
++{pe6} chip.cluster.pe6.state[7:0]
+^8 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe7.core_state.txt
++{pe7} chip.cluster.pe7.state[7:0]
+^9 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.pe8.core_state.txt
++{pe8} chip.cluster.pe8.state[7:0]
+@20c02024
+[color] 4
+^10 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_vector.txt
+#{dma} (0)chip.cluster.dma.channel_0[7:0] (1)chip.cluster.dma.channel_0[7:0] (2)chip.cluster.dma.channel_0[7:0] (3)chip.cluster.dma.channel_0[7:0] (4)chip.cluster.dma.channel_0[7:0] (5)chip.cluster.dma.channel_0[7:0] (6)chip.cluster.dma.channel_0[7:0] (7)chip.cluster.dma.channel_0[7:0] (0)chip.cluster.dma.channel_1[7:0] (1)chip.cluster.dma.channel_1[7:0] (2)chip.cluster.dma.channel_1[7:0] (3)chip.cluster.dma.channel_1[7:0] (4)chip.cluster.dma.channel_1[7:0] (5)chip.cluster.dma.channel_1[7:0] (6)chip.cluster.dma.channel_1[7:0] (7)chip.cluster.dma.channel_1[7:0] (0)chip.cluster.dma.channel_2[7:0] (1)chip.cluster.dma.channel_2[7:0] (2)chip.cluster.dma.channel_2[7:0] (3)chip.cluster.dma.channel_2[7:0] (4)chip.cluster.dma.channel_2[7:0] (5)chip.cluster.dma.channel_2[7:0] (6)chip.cluster.dma.channel_2[7:0] (7)chip.cluster.dma.channel_2[7:0] (0)chip.cluster.dma.channel_3[7:0] (1)chip.cluster.dma.channel_3[7:0] (2)chip.cluster.dma.channel_3[7:0] (3)chip.cluster.dma.channel_3[7:0] (4)chip.cluster.dma.channel_3[7:0] (5)chip.cluster.dma.channel_3[7:0] (6)chip.cluster.dma.channel_3[7:0] (7)chip.cluster.dma.channel_3[7:0] (0)chip.cluster.dma.channel_4[7:0] (1)chip.cluster.dma.channel_4[7:0] (2)chip.cluster.dma.channel_4[7:0] (3)chip.cluster.dma.channel_4[7:0] (4)chip.cluster.dma.channel_4[7:0] (5)chip.cluster.dma.channel_4[7:0] (6)chip.cluster.dma.channel_4[7:0] (7)chip.cluster.dma.channel_4[7:0] (0)chip.cluster.dma.channel_5[7:0] (1)chip.cluster.dma.channel_5[7:0] (2)chip.cluster.dma.channel_5[7:0] (3)chip.cluster.dma.channel_5[7:0] (4)chip.cluster.dma.channel_5[7:0] (5)chip.cluster.dma.channel_5[7:0] (6)chip.cluster.dma.channel_5[7:0] (7)chip.cluster.dma.channel_5[7:0] (0)chip.cluster.dma.channel_6[7:0] (1)chip.cluster.dma.channel_6[7:0] (2)chip.cluster.dma.channel_6[7:0] (3)chip.cluster.dma.channel_6[7:0] (4)chip.cluster.dma.channel_6[7:0] (5)chip.cluster.dma.channel_6[7:0] (6)chip.cluster.dma.channel_6[7:0] (7)chip.cluster.dma.channel_6[7:0] (0)chip.cluster.dma.channel_7[7:0] (1)chip.cluster.dma.channel_7[7:0] (2)chip.cluster.dma.channel_7[7:0] (3)chip.cluster.dma.channel_7[7:0] (4)chip.cluster.dma.channel_7[7:0] (5)chip.cluster.dma.channel_7[7:0] (6)chip.cluster.dma.channel_7[7:0] (7)chip.cluster.dma.channel_7[7:0] (0)chip.cluster.dma.channel_8[7:0] (1)chip.cluster.dma.channel_8[7:0] (2)chip.cluster.dma.channel_8[7:0] (3)chip.cluster.dma.channel_8[7:0] (4)chip.cluster.dma.channel_8[7:0] (5)chip.cluster.dma.channel_8[7:0] (6)chip.cluster.dma.channel_8[7:0] (7)chip.cluster.dma.channel_8[7:0] (0)chip.cluster.dma.channel_9[7:0] (1)chip.cluster.dma.channel_9[7:0] (2)chip.cluster.dma.channel_9[7:0] (3)chip.cluster.dma.channel_9[7:0] (4)chip.cluster.dma.channel_9[7:0] (5)chip.cluster.dma.channel_9[7:0] (6)chip.cluster.dma.channel_9[7:0] (7)chip.cluster.dma.channel_9[7:0] (0)chip.cluster.dma.channel_10[7:0] (1)chip.cluster.dma.channel_10[7:0] (2)chip.cluster.dma.channel_10[7:0] (3)chip.cluster.dma.channel_10[7:0] (4)chip.cluster.dma.channel_10[7:0] (5)chip.cluster.dma.channel_10[7:0] (6)chip.cluster.dma.channel_10[7:0] (7)chip.cluster.dma.channel_10[7:0] (0)chip.cluster.dma.channel_11[7:0] (1)chip.cluster.dma.channel_11[7:0] (2)chip.cluster.dma.channel_11[7:0] (3)chip.cluster.dma.channel_11[7:0] (4)chip.cluster.dma.channel_11[7:0] (5)chip.cluster.dma.channel_11[7:0] (6)chip.cluster.dma.channel_11[7:0] (7)chip.cluster.dma.channel_11[7:0] (0)chip.cluster.dma.channel_12[7:0] (1)chip.cluster.dma.channel_12[7:0] (2)chip.cluster.dma.channel_12[7:0] (3)chip.cluster.dma.channel_12[7:0] (4)chip.cluster.dma.channel_12[7:0] (5)chip.cluster.dma.channel_12[7:0] (6)chip.cluster.dma.channel_12[7:0] (7)chip.cluster.dma.channel_12[7:0] (0)chip.cluster.dma.channel_13[7:0] (1)chip.cluster.dma.channel_13[7:0] (2)chip.cluster.dma.channel_13[7:0] (3)chip.cluster.dma.channel_13[7:0] (4)chip.cluster.dma.channel_13[7:0] (5)chip.cluster.dma.channel_13[7:0] (6)chip.cluster.dma.channel_13[7:0] (7)chip.cluster.dma.channel_13[7:0] (0)chip.cluster.dma.channel_14[7:0] (1)chip.cluster.dma.channel_14[7:0] (2)chip.cluster.dma.channel_14[7:0] (3)chip.cluster.dma.channel_14[7:0] (4)chip.cluster.dma.channel_14[7:0] (5)chip.cluster.dma.channel_14[7:0] (6)chip.cluster.dma.channel_14[7:0] (7)chip.cluster.dma.channel_14[7:0] (0)chip.cluster.dma.channel_15[7:0] (1)chip.cluster.dma.channel_15[7:0] (2)chip.cluster.dma.channel_15[7:0] (3)chip.cluster.dma.channel_15[7:0] (4)chip.cluster.dma.channel_15[7:0] (5)chip.cluster.dma.channel_15[7:0] (6)chip.cluster.dma.channel_15[7:0] (7)chip.cluster.dma.channel_15[7:0]
+@2022
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_0} chip.cluster.dma.channel_0[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_1} chip.cluster.dma.channel_1[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_2} chip.cluster.dma.channel_2[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_3} chip.cluster.dma.channel_3[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_4} chip.cluster.dma.channel_4[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_5} chip.cluster.dma.channel_5[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_6} chip.cluster.dma.channel_6[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_7} chip.cluster.dma.channel_7[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_8} chip.cluster.dma.channel_8[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_9} chip.cluster.dma.channel_9[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_10} chip.cluster.dma.channel_10[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_11} chip.cluster.dma.channel_11[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_12} chip.cluster.dma.channel_12[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_13} chip.cluster.dma.channel_13[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_14} chip.cluster.dma.channel_14[7:0]
+^11 /home/jmini/riscv_bridge/tests/hello_minimal/chip.cluster.dma.dma_state.txt
++{channel_15} chip.cluster.dma.channel_15[7:0]
+@1001200
+-group_end
+@2022
+^12 /home/jmini/riscv_bridge/tests/hello_minimal/chip.soc.fc.core_state.txt
++{fc} chip.soc.fc.state[7:0]
+@c00200
+-periph_clock
+@22
++{cycles} chip.soc.periph_clock.cycles
++{period} chip.soc.periph_clock.period
+@1401200
+-periph_clock
+@c00200
+-fast_clock
+@22
++{cycles} chip.fast_clock.cycles
++{period} chip.fast_clock.period
+@1401200
+-fast_clock
+@c00200
+-ref_clock
+@22
++{cycles} chip.ref_clock.cycles
++{period} chip.ref_clock.period
+@1401200
+-ref_clock
+@c00200
+-uart_checker
+-clock
+@22
++{cycles} uart_checker.clock.cycles
++{period} uart_checker.clock.period
+@1401200
+-clock
+-uart_checker
+@1000200
+-overview
+@c00200
+-system
+-chip
+-soc_clock_domain
+@22
++{cycles} chip.soc_clock_domain.cycles
++{period} chip.soc_clock_domain.period
+@1401200
+-soc_clock_domain
+@c00200
+-cluster_clock
+@22
++{cycles} chip.cluster_clock.cycles
++{period} chip.cluster_clock.period
+@1401200
+-cluster_clock
+@c00200
+-cluster
+-pe0
+@22
++{irq_enable} chip.cluster.pe0.irq_enable
++{pc} chip.cluster.pe0.pc[31:0]
++{asm} chip.cluster.pe0.asm
++{func} chip.cluster.pe0.func
++{inline_func} chip.cluster.pe0.inline_func
++{file} chip.cluster.pe0.file
++{line} chip.cluster.pe0.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe0.pcer_cycles
++{instr} chip.cluster.pe0.pcer_instr
++{ld_stall} chip.cluster.pe0.pcer_ld_stall
++{jmp_stall} chip.cluster.pe0.pcer_jmp_stall
++{imiss} chip.cluster.pe0.pcer_imiss
++{ld} chip.cluster.pe0.pcer_ld
++{st} chip.cluster.pe0.pcer_st
++{jump} chip.cluster.pe0.pcer_jump
++{branch} chip.cluster.pe0.pcer_branch
++{taken_branch} chip.cluster.pe0.pcer_taken_branch
++{rvc} chip.cluster.pe0.pcer_rvc
++{ld_ext} chip.cluster.pe0.pcer_ld_ext
++{st_ext} chip.cluster.pe0.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe0.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe0.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe0.pcer_tcdm_cont
++{misaligned} chip.cluster.pe0.pcer_misaligned
++{insn_cont} chip.cluster.pe0.pcer_insn_cont
+@1401200
+-events
+-pe0
+@c00200
+-pe1
+@22
++{irq_enable} chip.cluster.pe1.irq_enable
++{pc} chip.cluster.pe1.pc[31:0]
++{asm} chip.cluster.pe1.asm
++{func} chip.cluster.pe1.func
++{inline_func} chip.cluster.pe1.inline_func
++{file} chip.cluster.pe1.file
++{line} chip.cluster.pe1.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe1.pcer_cycles
++{instr} chip.cluster.pe1.pcer_instr
++{ld_stall} chip.cluster.pe1.pcer_ld_stall
++{jmp_stall} chip.cluster.pe1.pcer_jmp_stall
++{imiss} chip.cluster.pe1.pcer_imiss
++{ld} chip.cluster.pe1.pcer_ld
++{st} chip.cluster.pe1.pcer_st
++{jump} chip.cluster.pe1.pcer_jump
++{branch} chip.cluster.pe1.pcer_branch
++{taken_branch} chip.cluster.pe1.pcer_taken_branch
++{rvc} chip.cluster.pe1.pcer_rvc
++{ld_ext} chip.cluster.pe1.pcer_ld_ext
++{st_ext} chip.cluster.pe1.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe1.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe1.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe1.pcer_tcdm_cont
++{misaligned} chip.cluster.pe1.pcer_misaligned
++{insn_cont} chip.cluster.pe1.pcer_insn_cont
+@1401200
+-events
+-pe1
+@c00200
+-pe2
+@22
++{irq_enable} chip.cluster.pe2.irq_enable
++{pc} chip.cluster.pe2.pc[31:0]
++{asm} chip.cluster.pe2.asm
++{func} chip.cluster.pe2.func
++{inline_func} chip.cluster.pe2.inline_func
++{file} chip.cluster.pe2.file
++{line} chip.cluster.pe2.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe2.pcer_cycles
++{instr} chip.cluster.pe2.pcer_instr
++{ld_stall} chip.cluster.pe2.pcer_ld_stall
++{jmp_stall} chip.cluster.pe2.pcer_jmp_stall
++{imiss} chip.cluster.pe2.pcer_imiss
++{ld} chip.cluster.pe2.pcer_ld
++{st} chip.cluster.pe2.pcer_st
++{jump} chip.cluster.pe2.pcer_jump
++{branch} chip.cluster.pe2.pcer_branch
++{taken_branch} chip.cluster.pe2.pcer_taken_branch
++{rvc} chip.cluster.pe2.pcer_rvc
++{ld_ext} chip.cluster.pe2.pcer_ld_ext
++{st_ext} chip.cluster.pe2.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe2.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe2.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe2.pcer_tcdm_cont
++{misaligned} chip.cluster.pe2.pcer_misaligned
++{insn_cont} chip.cluster.pe2.pcer_insn_cont
+@1401200
+-events
+-pe2
+@c00200
+-pe3
+@22
++{irq_enable} chip.cluster.pe3.irq_enable
++{pc} chip.cluster.pe3.pc[31:0]
++{asm} chip.cluster.pe3.asm
++{func} chip.cluster.pe3.func
++{inline_func} chip.cluster.pe3.inline_func
++{file} chip.cluster.pe3.file
++{line} chip.cluster.pe3.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe3.pcer_cycles
++{instr} chip.cluster.pe3.pcer_instr
++{ld_stall} chip.cluster.pe3.pcer_ld_stall
++{jmp_stall} chip.cluster.pe3.pcer_jmp_stall
++{imiss} chip.cluster.pe3.pcer_imiss
++{ld} chip.cluster.pe3.pcer_ld
++{st} chip.cluster.pe3.pcer_st
++{jump} chip.cluster.pe3.pcer_jump
++{branch} chip.cluster.pe3.pcer_branch
++{taken_branch} chip.cluster.pe3.pcer_taken_branch
++{rvc} chip.cluster.pe3.pcer_rvc
++{ld_ext} chip.cluster.pe3.pcer_ld_ext
++{st_ext} chip.cluster.pe3.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe3.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe3.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe3.pcer_tcdm_cont
++{misaligned} chip.cluster.pe3.pcer_misaligned
++{insn_cont} chip.cluster.pe3.pcer_insn_cont
+@1401200
+-events
+-pe3
+@c00200
+-pe4
+@22
++{irq_enable} chip.cluster.pe4.irq_enable
++{pc} chip.cluster.pe4.pc[31:0]
++{asm} chip.cluster.pe4.asm
++{func} chip.cluster.pe4.func
++{inline_func} chip.cluster.pe4.inline_func
++{file} chip.cluster.pe4.file
++{line} chip.cluster.pe4.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe4.pcer_cycles
++{instr} chip.cluster.pe4.pcer_instr
++{ld_stall} chip.cluster.pe4.pcer_ld_stall
++{jmp_stall} chip.cluster.pe4.pcer_jmp_stall
++{imiss} chip.cluster.pe4.pcer_imiss
++{ld} chip.cluster.pe4.pcer_ld
++{st} chip.cluster.pe4.pcer_st
++{jump} chip.cluster.pe4.pcer_jump
++{branch} chip.cluster.pe4.pcer_branch
++{taken_branch} chip.cluster.pe4.pcer_taken_branch
++{rvc} chip.cluster.pe4.pcer_rvc
++{ld_ext} chip.cluster.pe4.pcer_ld_ext
++{st_ext} chip.cluster.pe4.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe4.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe4.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe4.pcer_tcdm_cont
++{misaligned} chip.cluster.pe4.pcer_misaligned
++{insn_cont} chip.cluster.pe4.pcer_insn_cont
+@1401200
+-events
+-pe4
+@c00200
+-pe5
+@22
++{irq_enable} chip.cluster.pe5.irq_enable
++{pc} chip.cluster.pe5.pc[31:0]
++{asm} chip.cluster.pe5.asm
++{func} chip.cluster.pe5.func
++{inline_func} chip.cluster.pe5.inline_func
++{file} chip.cluster.pe5.file
++{line} chip.cluster.pe5.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe5.pcer_cycles
++{instr} chip.cluster.pe5.pcer_instr
++{ld_stall} chip.cluster.pe5.pcer_ld_stall
++{jmp_stall} chip.cluster.pe5.pcer_jmp_stall
++{imiss} chip.cluster.pe5.pcer_imiss
++{ld} chip.cluster.pe5.pcer_ld
++{st} chip.cluster.pe5.pcer_st
++{jump} chip.cluster.pe5.pcer_jump
++{branch} chip.cluster.pe5.pcer_branch
++{taken_branch} chip.cluster.pe5.pcer_taken_branch
++{rvc} chip.cluster.pe5.pcer_rvc
++{ld_ext} chip.cluster.pe5.pcer_ld_ext
++{st_ext} chip.cluster.pe5.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe5.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe5.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe5.pcer_tcdm_cont
++{misaligned} chip.cluster.pe5.pcer_misaligned
++{insn_cont} chip.cluster.pe5.pcer_insn_cont
+@1401200
+-events
+-pe5
+@c00200
+-pe6
+@22
++{irq_enable} chip.cluster.pe6.irq_enable
++{pc} chip.cluster.pe6.pc[31:0]
++{asm} chip.cluster.pe6.asm
++{func} chip.cluster.pe6.func
++{inline_func} chip.cluster.pe6.inline_func
++{file} chip.cluster.pe6.file
++{line} chip.cluster.pe6.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe6.pcer_cycles
++{instr} chip.cluster.pe6.pcer_instr
++{ld_stall} chip.cluster.pe6.pcer_ld_stall
++{jmp_stall} chip.cluster.pe6.pcer_jmp_stall
++{imiss} chip.cluster.pe6.pcer_imiss
++{ld} chip.cluster.pe6.pcer_ld
++{st} chip.cluster.pe6.pcer_st
++{jump} chip.cluster.pe6.pcer_jump
++{branch} chip.cluster.pe6.pcer_branch
++{taken_branch} chip.cluster.pe6.pcer_taken_branch
++{rvc} chip.cluster.pe6.pcer_rvc
++{ld_ext} chip.cluster.pe6.pcer_ld_ext
++{st_ext} chip.cluster.pe6.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe6.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe6.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe6.pcer_tcdm_cont
++{misaligned} chip.cluster.pe6.pcer_misaligned
++{insn_cont} chip.cluster.pe6.pcer_insn_cont
+@1401200
+-events
+-pe6
+@c00200
+-pe7
+@22
++{irq_enable} chip.cluster.pe7.irq_enable
++{pc} chip.cluster.pe7.pc[31:0]
++{asm} chip.cluster.pe7.asm
++{func} chip.cluster.pe7.func
++{inline_func} chip.cluster.pe7.inline_func
++{file} chip.cluster.pe7.file
++{line} chip.cluster.pe7.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe7.pcer_cycles
++{instr} chip.cluster.pe7.pcer_instr
++{ld_stall} chip.cluster.pe7.pcer_ld_stall
++{jmp_stall} chip.cluster.pe7.pcer_jmp_stall
++{imiss} chip.cluster.pe7.pcer_imiss
++{ld} chip.cluster.pe7.pcer_ld
++{st} chip.cluster.pe7.pcer_st
++{jump} chip.cluster.pe7.pcer_jump
++{branch} chip.cluster.pe7.pcer_branch
++{taken_branch} chip.cluster.pe7.pcer_taken_branch
++{rvc} chip.cluster.pe7.pcer_rvc
++{ld_ext} chip.cluster.pe7.pcer_ld_ext
++{st_ext} chip.cluster.pe7.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe7.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe7.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe7.pcer_tcdm_cont
++{misaligned} chip.cluster.pe7.pcer_misaligned
++{insn_cont} chip.cluster.pe7.pcer_insn_cont
+@1401200
+-events
+-pe7
+@c00200
+-pe8
+@22
++{irq_enable} chip.cluster.pe8.irq_enable
++{pc} chip.cluster.pe8.pc[31:0]
++{asm} chip.cluster.pe8.asm
++{func} chip.cluster.pe8.func
++{inline_func} chip.cluster.pe8.inline_func
++{file} chip.cluster.pe8.file
++{line} chip.cluster.pe8.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.cluster.pe8.pcer_cycles
++{instr} chip.cluster.pe8.pcer_instr
++{ld_stall} chip.cluster.pe8.pcer_ld_stall
++{jmp_stall} chip.cluster.pe8.pcer_jmp_stall
++{imiss} chip.cluster.pe8.pcer_imiss
++{ld} chip.cluster.pe8.pcer_ld
++{st} chip.cluster.pe8.pcer_st
++{jump} chip.cluster.pe8.pcer_jump
++{branch} chip.cluster.pe8.pcer_branch
++{taken_branch} chip.cluster.pe8.pcer_taken_branch
++{rvc} chip.cluster.pe8.pcer_rvc
++{ld_ext} chip.cluster.pe8.pcer_ld_ext
++{st_ext} chip.cluster.pe8.pcer_st_ext
++{ld_ext_cycles} chip.cluster.pe8.pcer_ld_ext_cycles
++{st_ext_cycles} chip.cluster.pe8.pcer_st_ext_cycles
++{tcdm_cont} chip.cluster.pe8.pcer_tcdm_cont
++{misaligned} chip.cluster.pe8.pcer_misaligned
++{insn_cont} chip.cluster.pe8.pcer_insn_cont
+@1401200
+-events
+-pe8
+-cluster
+@c00200
+-soc
+-fc
+@22
++{irq_enable} chip.soc.fc.irq_enable
++{pc} chip.soc.fc.pc[31:0]
++{asm} chip.soc.fc.asm
++{func} chip.soc.fc.func
++{inline_func} chip.soc.fc.inline_func
++{file} chip.soc.fc.file
++{line} chip.soc.fc.line[31:0]
+@c00200
+-events
+@22
++{cycles} chip.soc.fc.pcer_cycles
++{instr} chip.soc.fc.pcer_instr
++{ld_stall} chip.soc.fc.pcer_ld_stall
++{jmp_stall} chip.soc.fc.pcer_jmp_stall
++{imiss} chip.soc.fc.pcer_imiss
++{ld} chip.soc.fc.pcer_ld
++{st} chip.soc.fc.pcer_st
++{jump} chip.soc.fc.pcer_jump
++{branch} chip.soc.fc.pcer_branch
++{taken_branch} chip.soc.fc.pcer_taken_branch
++{rvc} chip.soc.fc.pcer_rvc
++{ld_ext} chip.soc.fc.pcer_ld_ext
++{st_ext} chip.soc.fc.pcer_st_ext
++{ld_ext_cycles} chip.soc.fc.pcer_ld_ext_cycles
++{st_ext_cycles} chip.soc.fc.pcer_st_ext_cycles
++{tcdm_cont} chip.soc.fc.pcer_tcdm_cont
++{misaligned} chip.soc.fc.pcer_misaligned
++{insn_cont} chip.soc.fc.pcer_insn_cont
+@1401200
+-events
+-fc
+@c00200
+-periph_clock
+@22
++{cycles} chip.soc.periph_clock.cycles
++{period} chip.soc.periph_clock.period
+@1401200
+-periph_clock
+-soc
+@c00200
+-fast_clock
+@22
++{cycles} chip.fast_clock.cycles
++{period} chip.fast_clock.period
+@1401200
+-fast_clock
+@c00200
+-ref_clock
+@22
++{cycles} chip.ref_clock.cycles
++{period} chip.ref_clock.period
+@1401200
+-ref_clock
+-chip
+@c00200
+-uart_checker
+-clock
+@22
++{cycles} uart_checker.clock.cycles
++{period} uart_checker.clock.period
+@1401200
+-clock
+-uart_checker
+-system

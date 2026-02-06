@@ -1,0 +1,229 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000       0x1c build/hello_minimal.o
+ .data          0x0000000000000000        0x0 build/hello_minimal.o
+ .bss           0x0000000000000000        0x0 build/hello_minimal.o
+ .text.startup  0x0000000000000000       0x3c build/hello_minimal.o
+ .rodata.str1.4
+                0x0000000000000000       0x40 build/hello_minimal.o
+ .debug_frame   0x0000000000000000       0x5c build/hello_minimal.o
+ .debug_info    0x0000000000000000      0x140 build/hello_minimal.o
+ .debug_abbrev  0x0000000000000000       0xe9 build/hello_minimal.o
+ .debug_loc     0x0000000000000000       0x2b build/hello_minimal.o
+ .debug_aranges
+                0x0000000000000000       0x28 build/hello_minimal.o
+ .debug_ranges  0x0000000000000000       0x30 build/hello_minimal.o
+ .debug_line    0x0000000000000000       0xa8 build/hello_minimal.o
+ .debug_str     0x0000000000000000      0x10f build/hello_minimal.o
+ .comment       0x0000000000000000       0x1b build/hello_minimal.o
+ .Pulp_Chip.Info
+                0x0000000000000000       0x4e build/hello_minimal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+L2               0x000000001c000004 0x000000000007fffc
+L2_aliased       0x0000000000000004 0x0000000000003ffc
+L1               0x0000000010000004 0x000000000000fffc
+L1_aliased       0x0000000000000004 0x000000000000fffc
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD build/hello_minimal.o
+LOAD /home/jmini/PULP/pulp-riscv-gnu-toolchain/install-32bit/lib/gcc/riscv32-unknown-elf/7.1.1/libgcc.a
+LOAD /home/jmini/PULP/pulp-riscv-gnu-toolchain/install-32bit/lib/gcc/riscv32-unknown-elf/7.1.1/libgcc.a
+START GROUP
+LOAD /home/jmini/PULP/pulp-riscv-gnu-toolchain/install-32bit/lib/gcc/riscv32-unknown-elf/7.1.1/../../../../riscv32-unknown-elf/lib/libc.a
+LOAD /home/jmini/PULP/pulp-riscv-gnu-toolchain/install-32bit/lib/gcc/riscv32-unknown-elf/7.1.1/../../../../riscv32-unknown-elf/lib/libgloss.a
+END GROUP
+LOAD /home/jmini/PULP/pulp-riscv-gnu-toolchain/install-32bit/lib/gcc/riscv32-unknown-elf/7.1.1/libgcc.a
+
+.data_tiny_fc   0x0000000000000004        0x0 load address 0x000000001c000004
+                0x0000000000000004                . = ALIGN (0x4)
+ *(.data_tiny_fc)
+ *(.data_tiny_fc.*)
+
+.init           0x000000001c000004        0x0
+                0x000000001c000004                . = ALIGN (0x4)
+ *(.init)
+
+.fini           0x000000001c000004        0x0
+                0x000000001c000004                . = ALIGN (0x4)
+ *(.fini)
+
+.preinit_array  0x000000001c000004        0x0
+                0x000000001c000004                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end, .)
+
+.init_array     0x000000001c000004        0x8
+                0x000000001c000004                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__init_array_start, .)
+                0x000000001c000004                __CTOR_LIST__ = .
+                0x000000001c000004        0x4 LONG 0x0 (((__CTOR_END__ - __CTOR_LIST__) / 0x4) - 0x2)
+ *(.ctors.start)
+ *(.ctors)
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x000000001c000008        0x4 LONG 0x0
+                0x000000001c00000c                __CTOR_END__ = .
+                [!provide]                        PROVIDE (__init_array_end, .)
+
+.fini_array     0x000000001c00000c        0x8
+                0x000000001c00000c                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__fini_array_start, .)
+                0x000000001c00000c                __DTOR_LIST__ = .
+                0x000000001c00000c        0x4 LONG 0x0 (((__DTOR_END__ - __DTOR_LIST__) / 0x4) - 0x2)
+ *(.dtors.start)
+ *(.dtors)
+                0x000000001c000010        0x4 LONG 0x0
+                0x000000001c000014                __DTOR_END__ = .
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end, .)
+
+.boot           0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.boot)
+ *(.boot.data)
+
+.rodata         0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.rodata)
+ *(.rodata.*)
+ *(.srodata)
+ *(.srodata.*)
+ *(.eh_frame*)
+
+.got            0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.got.plt)
+ *(.igot.plt)
+ *(.got)
+ *(.igot)
+
+.shbss          0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.shbss)
+
+.talias
+
+.gnu.offload_funcs
+                0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.gnu.offload_funcs)
+
+.gnu.offload_vars
+                0x000000001c000014        0x0
+                0x000000001c000014                . = ALIGN (0x4)
+ *(.gnu.offload_vars)
+
+.stack          0x000000001c000014      0x80c
+                0x000000001c000014                . = ALIGN (0x4)
+                0x000000001c000020                . = ALIGN (0x10)
+ *fill*         0x000000001c000014        0xc 
+                0x000000001c000020                stack_start = .
+                0x000000001c000820                . = (. + 0x800)
+ *fill*         0x000000001c000020      0x800 
+                0x000000001c000820                stack = .
+
+.data           0x000000001c000820        0x0
+                0x000000001c000820                . = ALIGN (0x4)
+                0x000000001c000820                sdata = .
+                0x000000001c000820                _sdata = .
+ *(.data_fc)
+ *(.data_fc.*)
+ *(.data)
+ *(.data.*)
+ *(.sdata)
+ *(.sdata.*)
+ *(.heapl2ram)
+ *(.fcTcdm)
+ *(.fcTcdm.*)
+ *(.fcTcdm_g)
+ *(.fcTcdm_g.*)
+                0x000000001c000820                . = ALIGN (0x4)
+                0x000000001c000820                edata = .
+                0x000000001c000820                _edata = .
+
+.bss            0x000000001c000820        0x0
+                0x000000001c000820                . = ALIGN (0x8)
+                0x000000001c000820                _bss_start = .
+ *(.bss)
+ *(.bss.*)
+ *(.sbss)
+ *(.sbss.*)
+ *(COMMON)
+                0x000000001c000820                . = ALIGN (0x4)
+                0x000000001c000820                _bss_end = .
+                0x000000001c000820                __l2_priv0_end = ALIGN (0x4)
+
+.vectors        0x000000001c008000        0x0
+                0x000000001c008000                __irq_vector_base = .
+ *(.vectors)
+
+.text           0x000000001c000820        0x0
+                0x000000001c000820                . = ALIGN (0x4)
+                0x000000001c000820                _stext = .
+ *(.text)
+ *(.text.*)
+ *(.text_l2)
+ *(.text_l2.*)
+                0x000000001c000820                _etext = .
+ *(.lit)
+ *(.shdata)
+                0x000000001c000820                _endtext = .
+                0x000000001c000820                . = ALIGN (0x4)
+                0x000000001c000820                __l2_priv1_end = ALIGN (0x4)
+
+.l2_data        0x000000001c010000        0x0
+                0x000000001c010000                . = ALIGN (0x4)
+                0x000000001c010000                __cluster_text_start = .
+ *(.cluster.text)
+ *(.cluster.text.*)
+                0x000000001c010000                . = ALIGN (0x4)
+                0x000000001c010000                __cluster_text_end = .
+ *(.l2_data)
+ *(.l2_data.*)
+ *(.data_fc_shared)
+ *(.data_fc_shared.*)
+                0x000000001c010000                . = ALIGN (0x4)
+                0x000000001c010000                _l1_preload_start_inL2 = ALIGN (0x4)
+
+.data_tiny_l1   0x0000000000000004        0x0 load address 0x000000001c000820
+                0x0000000000000004                . = ALIGN (0x4)
+                0x0000000000000004                _l1_preload_start = .
+ *(.data_tiny_l1)
+ *(.data_tiny_l1.*)
+ *(.data_alias_l1)
+ *(.data_alias_l1.*)
+
+.l1cluster_g    0x0000000010000004        0x0 load address 0x000000001c000820
+                0x0000000010000004                . = ALIGN (0x4)
+ *(.heapsram)
+ *(.heapsram.*)
+ *(.l1cluster_g)
+ *(.l1cluster_g.*)
+ *(.data_l1)
+ *(.data_l1.*)
+                0x0000000010000004                . = ALIGN (0x4)
+                0x0000000010000004                _libgomp_start = .
+ *(.libgomp)
+ *(.libgomp.*)
+                0x0000000010000004                . = ALIGN (0x4)
+
+.bss_l1         0x0000000010000004        0x0 load address 0x000000001c000820
+                0x0000000010000004                . = ALIGN (0x4)
+ *(.bss_l1)
+ *(.bss_l1.*)
+                0x0000000010000004                . = ALIGN (0x4)
+                0x0000000010000004                __l1_end = ALIGN (0x4)
+                0x000000001c000820                __l2_shared_end = (LOADADDR (.bss_l1) + SIZEOF (.bss_l1))
+                0x0000000000000000                _l1_preload_size = (SIZEOF (.data_tiny_l1) + SIZEOF (.l1cluster_g))
+                0x0000000000000000                __cluster_text_size = (__cluster_text_end - __cluster_text_start)
+                0x0000000010000004                __l1_heap_start = ALIGN (0x4)
+                0x0000000038010024                __l1_heap_size = ((LENGTH (L1) - __l1_heap_start) + ORIGIN (L1))
+OUTPUT(build/hello_minimal.elf elf32-littleriscv)

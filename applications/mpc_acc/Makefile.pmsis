@@ -1,0 +1,9 @@
+APP = mpc_acc_controller
+APP_SRCS = mpc_acc_controller.c
+APP_CFLAGS += -Os -g -I$(CURDIR)
+APP_LDFLAGS += -Os -g
+
+PULP_SDK_HOME ?= $(HOME)/PULP/pulp-sdk
+RULES_DIR ?= $(PULP_SDK_HOME)/tools/rules
+
+include $(RULES_DIR)/pmsis_rules.mk
